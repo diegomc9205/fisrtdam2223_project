@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class movement2 : MonoBehaviour
+{ private float speed=5;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float verticalAxis = Input.GetAxis("Vertical");
+        float horizontalAxis= Input.GetAxis("Horizontal");
+        
+        Vector3 direction=horizontalAxis * Vector3.right*2 + verticalAxis * Vector3.forward;//
+        direction.Normalize();
+        Vector3 velocity = direction * speed;//pienso en terminos de velocidad por segundo
+        Vector3 displacement = velocity * Time.deltaTime;//pienso en velocidad instantanea entre dos espacios de tiempo muy pequeños
+        transform.position +=  displacement;//actualizo la posicion( translación)
+    }
+}
