@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//1º A la izquierda te mueves al doble de rapidez que a la derecha con input de usuario.
 public class izq : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,9 +15,9 @@ public class izq : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float verticalAxis = Input.GetAxis("Vertical");
-        float horizontalAxis= Input.GetAxis("Horizontal");
-        
+        float verticalAxis = Input.GetAxis("Vertical");// para moverse con w y s
+        float horizontalAxis= Input.GetAxis("Horizontal");//moverse con a y d
+        //vector3.forward es para profundidad.
         Vector3 direction=horizontalAxis * Vector3.right + verticalAxis * Vector3.forward;//piensa en la direccion
         direction.Normalize();
         if ( direction.x<0)

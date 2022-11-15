@@ -25,9 +25,7 @@ public class rebotedos : MonoBehaviour
         Vector3 displacement = velocity * Time.deltaTime;//pienso en velocidad instantanea entre dos espacios de tiempo muy pequeños
         transform.position +=  displacement;//actualizo la posicion( translación)
 
-        //clampeo de y =limitacion de las coordenadas de y.
-        float clampedYCoord = Mathf.Clamp(posicionactual.y, minlimit, toplimit);
-        transform.position = new Vector3(posicionactual.x, clampedYCoord, posicionactual.z);
+       
 
     }
 }

@@ -24,9 +24,9 @@ public class ej5 : MonoBehaviour
         
       
 
-        Vector3 velocity = Vector3.zero;
-        velocity.x = direction.x * vel;
-        velocity.y = direction.y * vel;
+        Vector3 velocity = Vector3.zero;// la velocidad la pongo a 0
+        velocity.x = direction.x * vel;//damos celocidad a x 
+        velocity.y = direction.y * vel;//damos vel a y
         Vector3 displacement = velocity * Time.deltaTime;//pienso en velocidad instantanea entre dos espacios de tiempo muy pequeños
         transform.position +=  displacement;//actualizo la posicion( translación)
 
