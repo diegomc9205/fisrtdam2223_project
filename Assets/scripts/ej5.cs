@@ -1,33 +1,38 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rebotedos : MonoBehaviour
+public class ej5 : MonoBehaviour
 {
-    private float speed=2;
+    private float vel = 2;
+    private float limitd = 10;
+    private float limiti = -10;
     private float toplimit = 5;
     private float minlimit = -5;
 
-    private Vector3 direction = Vector3.up;
- 
+    
+    private Vector3 direction = Vector3.one;//1,1,1 de vectores
+    
     void Update()
     {
 
         Vector3 posicionactual = transform.position;
         if (posicionactual.y >= toplimit || posicionactual.y <= minlimit)
             direction.y *= -1;
+        if (posicionactual.x >= limitd || posicionactual.x <= limiti)
+            direction.x *= -1;
+        
+      
 
-
-        Vector3 velocity = direction * speed;//pienso en terminos de velocidad por segundo
-        if (direction.y > 0)
-            velocity = velocity * 2;
+        Vector3 velocity = Vector3.zero;
+        velocity.x = direction.x * vel;
+        velocity.y = direction.y * vel;
         Vector3 displacement = velocity * Time.deltaTime;//pienso en velocidad instantanea entre dos espacios de tiempo muy pequeños
         transform.position +=  displacement;//actualizo la posicion( translación)
 
         //clampeo de y =limitacion de las coordenadas de y.
         float clampedYCoord = Mathf.Clamp(posicionactual.y, minlimit, toplimit);
-        transform.position = new Vector3(posicionactual.x, clampedYCoord, posicionactual.z);
-
+        float clampedXCoord = Mathf.Clamp(posicionactual.x, limiti, limitd); 
+        transform.position = new Vector3(clampedXCoord, clampedYCoord, posicionactual.z);       
     }
 }

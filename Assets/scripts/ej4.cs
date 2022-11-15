@@ -17,7 +17,7 @@ public class ej4 : MonoBehaviour
         Vector3 posicionactual = transform.position;
         if (posicionactual.y > toplimit || posicionactual.y < minlimit)
             direction.y *= -1;
-            directionHorizontal.x *= 1;
+           
    
 
 
@@ -26,6 +26,7 @@ public class ej4 : MonoBehaviour
         Vector3 displacement = velocity * Time.deltaTime;//pienso en velocidad instantanea entre dos espacios de tiempo muy pequeños
         transform.position +=  displacement;//actualizo la posicion( translación)
 
-        
+        float clampedYCoord = Mathf.Clamp(posicionactual.y, minlimit, toplimit);
+        transform.position = new Vector3(posicionactual.x, clampedYCoord, posicionactual.z);     
     }
 }
